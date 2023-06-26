@@ -128,7 +128,3 @@ db.usuario.insertMany([
     ],
   },
 ]);
-db.usuario.find();
-// Eliminar todos los datos de la coleccion usuarios
-// use("wolex");
-// db.usuario.deleteMany({});

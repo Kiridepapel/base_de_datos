@@ -188,7 +188,8 @@ VALUES
     (27, 'Schneider Electric ION9250', 'Schneider Electric', 'Medidor de energía', 1150.00),
     (28, 'Elster A3 ETA', 'Elster', 'Medidor de energía', 1200.00),
     (29, 'ABB Alpha Premium', 'ABB', 'Medidor de energía', 550.00),
-    (30, 'Itron Centron Supreme', 'Itron', 'Medidor de energía', 1250.00);
+    (30, 'Itron Centron Supreme', 'Itron', 'Medidor de energía', 1250.00),
+    (31, 'Itron Centron Mega', 'Itron', 'Medidor de energía', 500.00);
 
 -- Inserts para la tabla "propiedad"
 INSERT INTO propiedad (idPropiedad, tipoPropiedad, idZona, idUsuario, idDispositivoMedidor, idEmpresaproveedora)
@@ -222,7 +223,8 @@ VALUES
     (27, 'Casa', 27, 5, 27, 1),
     (28, 'Departamento', 28, 1, 28, 3),
     (29, 'Departamento', 29, 4, 29, 3),
-    (30, 'Casa', 30, 1, 30, 1);
+    (30, 'Casa', 30, 1, 30, 1),
+    (31, 'Casa', 1, 1, 31, 1);
 
 -- Inserts para la tabla "reporte_consumo"
 INSERT INTO reporte_consumo (idReporteConsumoEnergia, fechaExacta, idUsuario, idPropiedad, idDispositivoMedidor)
@@ -589,7 +591,9 @@ VALUES
     (27, '2023-07-21', 'Consumo de energía inusual en la lavadora', 'La lavadora está consumiendo una cantidad inusual de energía. Verifica su configuración y realiza el mantenimiento necesario.', 2, 13),
     (28, '2023-07-22', 'Falla en el sistema de alarma', 'El sistema de alarma ha presentado un fallo en su funcionamiento. Revisa los sensores y restablece la configuración.', 3, 20),
     (29, '2023-07-23', 'Exceso de tiempo de uso en la computadora', 'Has utilizado la computadora durante un período prolongado. Recuerda apagarla o ponerla en modo de suspensión cuando no la estés utilizando.', 4, 27),
-    (30, '2023-07-24', 'Problema de temperatura en el congelador', 'La temperatura del congelador parece estar demasiado baja. Verifica su configuración y realiza el mantenimiento correspondiente.', 5, 4);
+    (30, '2023-07-24', 'Problema de temperatura en el congelador', 'La temperatura del congelador parece estar demasiado baja. Verifica su configuración y realiza el mantenimiento correspondiente.', 5, 4),
+    (31, '2023-06-26', 'Problema de encendido en el horno', 'El horno ha presentado problemas al encenderse. Verifica las conexiones y realiza el mantenimiento necesario.', 1, 5),
+    (32, '2023-06-29', 'Problema de temperatura en la refrigeradora', 'La temperatura de la refrigeradora parece estar demasiado alta. Verifica su configuración y realiza el mantenimiento correspondiente.', 1, 22);
 
 -- Inserts para la tabla "estabilidad_poste"
 INSERT INTO estabilidad_poste (idEstabilidadPoste, tipoEstabilidad, detalle)

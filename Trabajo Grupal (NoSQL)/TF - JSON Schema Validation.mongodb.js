@@ -6,6 +6,9 @@ db.createCollection("usuario", {
       bsonType: "object",
       required: ["nombres", "apellidos", "telefono", "dni"],
       properties: {
+        _id: {
+          bsonType: "string",
+        },
         nombres: {
           bsonType: "string",
           minLength: 1,
@@ -29,7 +32,6 @@ db.createCollection("usuario", {
           items: {
             bsonType: "object",
             required: [
-              "_id",
               "idZona",
               "tipoPropiedad",
               "dispositivoMedidor",
@@ -48,7 +50,6 @@ db.createCollection("usuario", {
               dispositivoMedidor: {
                 bsonType: "object",
                 required: [
-                  "_id",
                   "modeloMedidor",
                   "marcaMedidor",
                   "tipoMedidor",
@@ -78,7 +79,6 @@ db.createCollection("usuario", {
                     items: {
                       bsonType: "object",
                       required: [
-                        "_id",
                         "idReporteConsumoEnergia",
                         "nombreElec",
                         "marcaElec",
@@ -128,7 +128,7 @@ db.createCollection("usuario", {
               },
               empresaProveedora: {
                 bsonType: "object",
-                required: ["_id", "nombreProveedora"],
+                required: ["nombreProveedora"],
                 properties: {
                   _id: {
                     bsonType: "string",
@@ -143,7 +143,7 @@ db.createCollection("usuario", {
                   },
                   empresaReguladora: {
                     bsonType: "object",
-                    required: ["_id", "nombreReguladora"],
+                    required: ["nombreReguladora"],
                     properties: {
                       _id: {
                         bsonType: "string",

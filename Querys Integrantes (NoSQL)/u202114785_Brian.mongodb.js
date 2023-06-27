@@ -315,6 +315,9 @@ db.poste_luz.insertOne({
   },
 });
 
+use("wolex");
+db.poste_luz.find();
+
 // QUERY 3: Obtener la zona de los postes de luz que han tenido al menos un mantenimiento en entre el 2023-06-25 y el 2023-06-30 y con calidad de mantenimiento alta. Debe mostrarse además de la zona, la fecha exacta en la que se realizó ese mantenimiento y el tipo de mantenimiento que fue.
 use("wolex");
 db.poste_luz.aggregate([
@@ -378,7 +381,7 @@ db.usuario.aggregate([
           $filter: {
             input: "$propiedades",
             cond: {
-              $gt: ["$$this.dispositivoMedidor.capacidadMedidor", 3], // gt: > que | // $$this: referencia al elemento actual del arreglo que se está filtrando
+              $gt: ["$$this.dispositivoMedidor.capacidadMedidor", 3],
             },
           },
         },

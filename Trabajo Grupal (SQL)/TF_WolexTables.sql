@@ -1,9 +1,7 @@
--- DROP DATABASE wolex;
-
--- CREATE DATABASE
+-- Crear base de datos
 CREATE DATABASE wolex;
 
--- USE WOLEX DATABASE
+-- Usar la base de datos
 USE wolex;
 
 -- TABLES

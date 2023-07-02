@@ -1,34 +1,42 @@
 -- Usar la base de datos
 USE wolex;
+GO
 
 -- Inserts para la tabla "usuario"
-INSERT INTO usuario (idUsuario, nombres, apellidos, telefono, dni)
+INSERT INTO usuario
+    (idUsuario, nombres, apellidos, telefono, dni)
 VALUES
     (1, 'Brian', 'Uceda Hirata', '982849285', '12345678'),
     (2, 'Luis', 'Pérez Gonzales', '987654321', '87654321'),
     (3, 'Ana', 'Gutiérrez Torres', '956784512', '76543210'),
     (4, 'María', 'López Rodríguez', '964738291', '65432109'),
     (5, 'Carlos', 'Vargas Silva', '951234567', '54321098');
+GO
 
 -- Inserts para la tabla "ciudad"
-INSERT INTO ciudad (idCiudad, nombreCiudad, codigoPostal)
+INSERT INTO ciudad
+    (idCiudad, nombreCiudad, codigoPostal)
 VALUES
     (1, 'Lima', '15029'),
     (2, 'Arequipa', '10592'),
     (3, 'Trujillo', '13005');
+GO
 
 -- Inserts para la tabla "distrito"
-INSERT INTO distrito (idDistrito, nombreDistrito, codigoDistrital, idCiudad)
+INSERT INTO distrito
+    (idDistrito, nombreDistrito, codigoDistrital, idCiudad)
 VALUES
     (1, 'Miraflores', '150104', 1),
     (2, 'San Isidro', '150126', 1),
     (3, 'Yanahuara', '040105', 2),
     (4, 'Cercado de Arequipa', '040101', 2),
     (5, 'Moche', '130104', 3);
+GO
 
 -- Inserts para la tabla "zona"
-INSERT INTO zona (idZona, nombreZona, latitud, longitud, idDistrito)
-VALUES 
+INSERT INTO zona
+    (idZona, nombreZona, latitud, longitud, idDistrito)
+VALUES
     (1, 'Parque Kennedy', -12.121584, -77.029764, 1),
     (2, 'Malecón de Miraflores', -12.142985, -77.033508, 1),
     (3, 'Bosque El Olivar', -12.101246, -77.032609, 1),
@@ -129,35 +137,45 @@ VALUES
     (98, NULL, -12.345678, -77.987654, NULL),
     (99, NULL, -13.456789, -78.654321, NULL),
     (100, NULL, -12.345678, -77.123456, NULL);
+GO
 
 -- Inserts para la tabla "empresa_reguladora"
-INSERT INTO empresa_reguladora (idEmpresaReguladora, nombreReguladora, informacion)
+INSERT INTO empresa_reguladora
+    (idEmpresaReguladora, nombreReguladora, informacion)
 VALUES
     (1, 'OSINERGMIN', 'Información de OSINERGMIN');
+GO
 
 -- Inserts para la tabla "empresa_proveedora"
-INSERT INTO empresa_proveedora (idEmpresaproveedora, nombreProveedora, informacion, idEmpresaReguladora)
+INSERT INTO empresa_proveedora
+    (idEmpresaproveedora, nombreProveedora, informacion, idEmpresaReguladora)
 VALUES
     (1, 'Luz del Sur', 'Información de Luz del Sur', 1),
     (2, 'Enel Perú', 'Información de Enel Perú', 1),
     (3, 'Electro Dunas', 'Información de Electro Dunas', 1);
+GO
 
 -- Inserts para la tabla "medidor_luz"
-INSERT INTO medidor_luz (idMedidorLuz, marca, modelo, fechaInstalacion, capacidad, consumoMes, idEmpresaproveedora)
+INSERT INTO medidor_luz
+    (idMedidorLuz, marca, modelo, fechaInstalacion, capacidad, consumoMes, idEmpresaproveedora)
 VALUES
     (1, 'Schneider Electric', 'iEM3150', '2022-01-01', 100.0000, 50.0000, 1),
     (2, 'ABB', 'B21', '2021-05-15', 200.0000, 80.0000, 2),
     (3, 'Siemens', 'PAC3200', '2023-03-10', 150.0000, 60.0000, 3);
+GO
 
 -- Inserts para la tabla "reporte_consumo_proveedora"
-INSERT INTO reporte_consumo_proveedora (idReporteConsumoProveedora, idMedidorLuz, consumoTotal, fecha)
+INSERT INTO reporte_consumo_proveedora
+    (idReporteConsumoProveedora, idMedidorLuz, consumoTotal, fecha)
 VALUES
     (1, 1, 500, '2023-06-01'),
     (2, 2, 800, '2023-06-01'),
     (3, 3, 600, '2023-06-01');
-    
+GO
+
 -- Inserts para la tabla "dispositivo_medidor"
-INSERT INTO dispositivo_medidor (idDispositivoMedidor, modeloMedidor, marcaMedidor, tipoMedidor, capacidadMedidor)
+INSERT INTO dispositivo_medidor
+    (idDispositivoMedidor, modeloMedidor, marcaMedidor, tipoMedidor, capacidadMedidor)
 VALUES
     (1, 'ABB Alpha Plus', 'ABB', 'Medidor de energía', 100.00),
     (2, 'Itron Centron', 'Itron', 'Medidor de energía', 200.00),
@@ -190,10 +208,12 @@ VALUES
     (29, 'ABB Alpha Premium', 'ABB', 'Medidor de energía', 550.00),
     (30, 'Itron Centron Supreme', 'Itron', 'Medidor de energía', 1250.00),
     (31, 'Itron Centron Mega', 'Itron', 'Medidor de energía', 500.00);
+GO
 
 -- Inserts para la tabla "propiedad"
-INSERT INTO propiedad (idPropiedad, tipoPropiedad, idZona, idUsuario, idDispositivoMedidor, idEmpresaproveedora)
-VALUES 
+INSERT INTO propiedad
+    (idPropiedad, tipoPropiedad, idZona, idUsuario, idDispositivoMedidor, idEmpresaproveedora)
+VALUES
     (1, 'Departamento', 1, 1, 1, 1),
     (2, 'Departamento', 2, 5, 2, 2),
     (3, 'Departamento', 3, 5, 3, 3),
@@ -225,10 +245,12 @@ VALUES
     (29, 'Departamento', 29, 4, 29, 3),
     (30, 'Casa', 30, 1, 30, 1),
     (31, 'Casa', 1, 1, 31, 1);
+GO
 
 -- Inserts para la tabla "reporte_consumo"
-INSERT INTO reporte_consumo (idReporteConsumoEnergia, fechaExacta, idUsuario, idPropiedad, idDispositivoMedidor)
-VALUES 
+INSERT INTO reporte_consumo
+    (idReporteConsumoEnergia, fechaExacta, idUsuario, idPropiedad, idDispositivoMedidor)
+VALUES
     -- Reportes para el usuario 1 (Brian)
     (1, '2023-06-22 00:00:00', 1, 16, 1),
     (2, '2023-06-23 01:30:00', 1, 30, 2),
@@ -394,9 +416,11 @@ VALUES
     (158, '2023-07-22 11:15:00', 5, 23, 1),
     (159, '2023-07-23 13:50:00', 5, 19, 2),
     (160, '2023-07-24 15:40:00', 5, 18, 4);
+GO
 
 -- Inserts para la tabla "electrodomestico"
-INSERT INTO electrodomestico (idElectrodomestico, idDispositivoMedidor, idReporteConsumoEnergia, nombreElec, marcaElec, modeloElec, tipoElec, descripcionElec, minutosDeUsoElec, consumoEnergiaElec)
+INSERT INTO electrodomestico
+    (idElectrodomestico, idDispositivoMedidor, idReporteConsumoEnergia, nombreElec, marcaElec, modeloElec, tipoElec, descripcionElec, minutosDeUsoElec, consumoEnergiaElec)
 VALUES
     (1, 1, 1, 'Televisor', 'Sony', 'ABC123', 'LED', 'Televisor de alta definición', 120, 200),
     (2, 1, 2, 'Refrigeradora', 'LG', 'XYZ456', 'Doble puerta', 'Refrigeradora con congelador', 240, 400),
@@ -558,9 +582,11 @@ VALUES
     (158, 29, 158, 'Refrigeradora', 'Samsung', 'HIJ456', 'Doble puerta', 'Refrigeradora de dos puertas', 240, 450),
     (159, 30, 159, 'Lavadora', 'Maytag', 'KLM789', 'Carga superior', 'Lavadora de carga superior', 90, 300),
     (160, 30, 160, 'Secadora', 'LG', 'NOP123', 'Eléctrica', 'Secadora de ropa eléctrica', 120, 350);
+GO
 
 -- Inserts para la tabla "aviso"
-INSERT INTO aviso (idAviso, fecha, mensaje, descripcionDetallada, idUsuario, idElectrodomestico)
+INSERT INTO aviso
+    (idAviso, fecha, mensaje, descripcionDetallada, idUsuario, idElectrodomestico)
 VALUES
     (1, '2023-06-25', 'Consumo de energía fuera de lo común', 'Tu licuadora está consumiendo demasiada energía', 1, 5),
     (2, '2023-06-26', 'Problema de temperatura en el refrigerador', 'La temperatura del refrigerador parece estar demasiado alta. Verifica su configuración.', 2, 12),
@@ -594,10 +620,12 @@ VALUES
     (30, '2023-07-24', 'Problema de temperatura en el congelador', 'La temperatura del congelador parece estar demasiado baja. Verifica su configuración y realiza el mantenimiento correspondiente.', 5, 4),
     (31, '2023-06-26', 'Problema de encendido en el horno', 'El horno ha presentado problemas al encenderse. Verifica las conexiones y realiza el mantenimiento necesario.', 1, 5),
     (32, '2023-06-29', 'Problema de temperatura en la refrigeradora', 'La temperatura de la refrigeradora parece estar demasiado alta. Verifica su configuración y realiza el mantenimiento correspondiente.', 1, 22);
+GO
 
 -- Inserts para la tabla "estabilidad_poste"
-INSERT INTO estabilidad_poste (idEstabilidadPoste, tipoEstabilidad, detalle)
-VALUES 
+INSERT INTO estabilidad_poste
+    (idEstabilidadPoste, tipoEstabilidad, detalle)
+VALUES
     (1, 'Estable - Buen estado', 'El poste de luz se encuentra en buen estado y no presenta problemas de estabilidad.'),
     (2, 'Estable - Ligero desgaste', 'El poste de luz está en condiciones aceptables, pero muestra signos de desgaste leve.'),
     (3, 'Inestable - Necesita reparación', 'El poste de luz tiene problemas de estabilidad y requiere reparación para garantizar su seguridad y funcionalidad.'),
@@ -606,9 +634,11 @@ VALUES
     (6, 'En reparación - Mantenimiento general', 'El poste de luz está en mantenimiento general para mejorar su estabilidad y funcionalidad.'),
     (7, 'No aplicable - Nuevo', 'El poste de luz es recién instalado y aún no ha tenido tiempo para mostrar problemas.'),
     (8, 'No aplicable - Información no disponible', 'No se tiene información sobre la estabilidad del poste de luz.');
+GO
 
 -- Inserts para la tabla "poste_luz"
-INSERT INTO poste_luz (idPosteLuz, fechaInstalacion, idEstabilidadPoste, idEmpresaReguladora, idZona)
+INSERT INTO poste_luz
+    (idPosteLuz, fechaInstalacion, idEstabilidadPoste, idEmpresaReguladora, idZona)
 VALUES
     (1, '2004-10-15', 2, 1, 50),
     (2, '1999-05-03', 8, 1, 72),
@@ -710,9 +740,11 @@ VALUES
     (98, '2002-09-23', 5, 1, 44),
     (99, '1997-06-09', 1, 1, 73),
     (100, '2019-03-27', 7, 1, 60);
+GO
 
 -- Inserts para la tabla "calificacion"
-INSERT INTO calificacion (idPosteLuz, idUsuario, cantEstrellas, comentario)
+INSERT INTO calificacion
+    (idPosteLuz, idUsuario, cantEstrellas, comentario)
 VALUES
     (1, 4, '4', 'El poste se encuentra en buen estado, pero podría mejorar su estabilidad.'),
     (2, 2, '5', 'El poste está en excelentes condiciones, muy estable.'),
@@ -814,18 +846,22 @@ VALUES
     (98, 3, '2', 'El poste de luz es inestable y representa un riesgo para la seguridad.'),
     (99, 5, '1', 'El poste está en mal estado y necesita reparación urgente para mantener su estabilidad.'),
     (100, 1, '4', 'El poste de luz muestra desgaste, pero aún mantiene su estabilidad.');
+GO
 
 -- Inserts para la tabla "tipo_mantenimiento"
-INSERT INTO tipo_mantenimiento (idTipoMantenimiento, tipoMantenimiento, detalle)
+INSERT INTO tipo_mantenimiento
+    (idTipoMantenimiento, tipoMantenimiento, detalle)
 VALUES
     (1, 'Mantenimiento preventivo regular', 'Inspección visual del poste, revisión de conexiones eléctricas, limpieza de componentes, y reemplazo de piezas desgastadas.'),
     (2, 'Mantenimiento correctivo', 'Reparación de averías y fallos identificados en el poste de luz, como reemplazo de componentes defectuosos o solución de problemas eléctricos.'),
     (3, 'Mantenimiento de limpieza', 'Limpieza periódica del poste de luz para eliminar suciedad, polvo, excrementos de aves u otros elementos que puedan afectar su funcionamiento.'),
     (4, 'Mantenimiento de pintura', 'Aplicación de pintura protectora en el poste de luz para prevenir la corrosión y mantener su apariencia estética.'),
     (5, 'Mantenimiento de luminarias', 'Reemplazo o reparación de las luminarias del poste de luz, incluyendo bombillas, reflectores, balastos u otros componentes relacionados con la iluminación.');
+GO
 
 -- Inserts para la tabla "tecnico"
-INSERT INTO tecnico (idTecnico, nombres, apellidos, telefono, dni, aniosServicio, mesesServicio, empresa)
+INSERT INTO tecnico
+    (idTecnico, nombres, apellidos, telefono, dni, aniosServicio, mesesServicio, empresa)
 VALUES
     (1, 'Juan', 'Pérez González', '987654321', '73648928', 5, 8, 'Electroperú'),
     (2, 'María', 'González López', '912345678', '76543231', 3, 4, 'Edegel'),
@@ -842,9 +878,12 @@ VALUES
     (13, 'Roberto', 'Mendoza Pérez', '933456789', '23456758', 3, 8, 'Esel'),
     (14, 'Carolina', 'Ortega García', '944567890', '34567819', 7, 4, 'Distriluz'),
     (15, 'Fernando', 'Lara González', '955678901', '45678920', 6, 1, 'Distriluz');
+GO
 
 -- Inserts para la tabla "mantenimiento"
-INSERT INTO mantenimiento (idTecnico, idPosteLuz, detalle, fecha, hora, calidad, idTipoMantenimiento) VALUES
+INSERT INTO mantenimiento
+    (idTecnico, idPosteLuz, detalle, fecha, hora, calidad, idTipoMantenimiento)
+VALUES
     (7, 89, 'Inspección visual del poste, revisión de conexiones eléctricas, limpieza de componentes, y reemplazo de piezas desgastadas.', '2020-08-15', '09:30:00', 'Buena', 1),
     (11, 64, 'Reparación de averías y fallos identificados en el poste de luz, como reemplazo de componentes defectuosos o solución de problemas eléctricos.', '2019-02-27', '14:45:00', 'Normal', 2),
     (5, 72, 'Limpieza periódica del poste de luz para eliminar suciedad, polvo, excrementos de aves u otros elementos que puedan afectar su funcionamiento.', '2017-06-10', '11:15:00', 'Buena', 3),
@@ -968,3 +1007,4 @@ INSERT INTO mantenimiento (idTecnico, idPosteLuz, detalle, fecha, hora, calidad,
     (3, 33, 'Inspección visual del poste, revisión de conexiones eléctricas, limpieza de componentes, y reemplazo de piezas desgastadas.', '2019-08-08', '13:00:00', 'Buena', 1),
     (9, 32, 'Limpieza periódica del poste de luz para eliminar suciedad, polvo, excrementos de aves u otros elementos que puedan afectar su funcionamiento.', '2018-10-25', '11:20:00', 'Buena', 3),
     (2, 42, 'Limpieza periódica del poste de luz para eliminar suciedad, polvo, excrementos de aves u otros elementos que puedan afectar su funcionamiento.', '2019-01-24', '11:05:00', 'Buena', 3);
+GO

@@ -1,199 +1,220 @@
 -- Crear base de datos
 CREATE DATABASE wolex;
+GO
 
 -- Usar la base de datos
 USE wolex;
+GO
 
 -- TABLES
 -- Table: aviso
-CREATE TABLE aviso (
-    idAviso int  NOT NULL,
-    fecha date  NOT NULL,
-    mensaje varchar(100)  NOT NULL,
-    descripcionDetallada varchar(500)  NOT NULL,
-    idUsuario int  NOT NULL,
-    idElectrodomestico int  NOT NULL,
+CREATE TABLE aviso
+(
+    idAviso INT NOT NULL,
+    fecha DATE NOT NULL,
+    mensaje VARCHAR(100) NOT NULL,
+    descripcionDetallada VARCHAR(500) NOT NULL,
+    idUsuario INT NOT NULL,
+    idElectrodomestico INT NOT NULL,
     CONSTRAINT aviso_pk PRIMARY KEY  (idAviso)
 );
 
 -- Table: calificacion
-CREATE TABLE calificacion (
-    idPosteLuz int  NOT NULL,
-    idUsuario int  NOT NULL,
-    cantEstrellas char(5)  NOT NULL,
-    comentario varchar(240)  NOT NULL,
+CREATE TABLE calificacion
+(
+    idPosteLuz INT NOT NULL,
+    idUsuario INT NOT NULL,
+    cantEstrellas CHAR(5) NOT NULL,
+    comentario VARCHAR(240) NOT NULL,
     CONSTRAINT calificacion_pk PRIMARY KEY  (idPosteLuz,idUsuario)
 );
 
 -- Table: ciudad
-CREATE TABLE ciudad (
-    idCiudad int  NOT NULL,
-    nombreCiudad varchar(50)  NOT NULL,
-    codigoPostal char(5)  NOT NULL,
+CREATE TABLE ciudad
+(
+    idCiudad INT NOT NULL,
+    nombreCiudad VARCHAR(50) NOT NULL,
+    codigoPostal CHAR(5) NOT NULL,
     CONSTRAINT ciudad_pk PRIMARY KEY  (idCiudad)
 );
 
 -- Table: dispositivo_medidor
-CREATE TABLE dispositivo_medidor (
-    idDispositivoMedidor int  NOT NULL,
-    modeloMedidor varchar(40)  NOT NULL,
-    marcaMedidor varchar(40)  NOT NULL,
-    tipoMedidor varchar(20)  NOT NULL,
-    capacidadMedidor decimal(10,6)  NOT NULL,
+CREATE TABLE dispositivo_medidor
+(
+    idDispositivoMedidor INT NOT NULL,
+    modeloMedidor VARCHAR(40) NOT NULL,
+    marcaMedidor VARCHAR(40) NOT NULL,
+    tipoMedidor VARCHAR(20) NOT NULL,
+    capacidadMedidor DECIMAL(10,6) NOT NULL,
     CONSTRAINT dispositivo_medidor_pk PRIMARY KEY  (idDispositivoMedidor)
 );
 
 -- Table: distrito
-CREATE TABLE distrito (
-    idDistrito int  NOT NULL,
-    nombreDistrito varchar(50)  NOT NULL,
-    codigoDistrital char(6)  NOT NULL,
-    idCiudad int  NOT NULL,
+CREATE TABLE distrito
+(
+    idDistrito INT NOT NULL,
+    nombreDistrito VARCHAR(50) NOT NULL,
+    codigoDistrital CHAR(6) NOT NULL,
+    idCiudad INT NOT NULL,
     CONSTRAINT distrito_pk PRIMARY KEY  (idDistrito)
 );
 
 -- Table: electrodomestico
-CREATE TABLE electrodomestico (
-    idElectrodomestico int  NOT NULL,
-    idDispositivoMedidor int  NOT NULL,
-    idReporteConsumoEnergia int  NOT NULL,
-    nombreElec varchar(50)  NOT NULL,
-    marcaElec varchar(60)  NOT NULL,
-    modeloElec varchar(60)  NOT NULL,
-    tipoElec varchar(50)  NOT NULL,
-    descripcionElec varchar(300)  NOT NULL,
-    minutosDeUsoElec int  NOT NULL,
-    consumoEnergiaElec int  NOT NULL,
+CREATE TABLE electrodomestico
+(
+    idElectrodomestico INT NOT NULL,
+    idDispositivoMedidor INT NOT NULL,
+    idReporteConsumoEnergia INT NOT NULL,
+    nombreElec VARCHAR(50) NOT NULL,
+    marcaElec VARCHAR(60) NOT NULL,
+    modeloElec VARCHAR(60) NOT NULL,
+    tipoElec VARCHAR(50) NOT NULL,
+    descripcionElec VARCHAR(300) NOT NULL,
+    minutosDeUsoElec INT NOT NULL,
+    consumoEnergiaElec INT NOT NULL,
     CONSTRAINT electrodomestico_pk PRIMARY KEY  (idElectrodomestico)
 );
 
 -- Table: empresa_proveedora
-CREATE TABLE empresa_proveedora (
-    idEmpresaProveedora int  NOT NULL,
-    nombreProveedora varchar(50)  NOT NULL,
-    informacion varchar(777)  NOT NULL,
-    idEmpresaReguladora int  NOT NULL,
+CREATE TABLE empresa_proveedora
+(
+    idEmpresaProveedora INT NOT NULL,
+    nombreProveedora VARCHAR(50) NOT NULL,
+    informacion VARCHAR(777) NOT NULL,
+    idEmpresaReguladora INT NOT NULL,
     CONSTRAINT empresa_proveedora_pk PRIMARY KEY  (idEmpresaProveedora)
 );
 
 -- Table: empresa_reguladora
-CREATE TABLE empresa_reguladora (
-    idEmpresaReguladora int  NOT NULL,
-    nombreReguladora varchar(50)  NOT NULL,
-    informacion varchar(777)  NOT NULL,
+CREATE TABLE empresa_reguladora
+(
+    idEmpresaReguladora INT NOT NULL,
+    nombreReguladora VARCHAR(50) NOT NULL,
+    informacion VARCHAR(777) NOT NULL,
     CONSTRAINT empresa_reguladora_pk PRIMARY KEY  (idEmpresaReguladora)
 );
 
 -- Table: estabilidad_poste
-CREATE TABLE estabilidad_poste (
-    idEstabilidadPoste int  NOT NULL,
-    tipoEstabilidad varchar(60)  NOT NULL,
-    detalle varchar(777)  NOT NULL,
+CREATE TABLE estabilidad_poste
+(
+    idEstabilidadPoste INT NOT NULL,
+    tipoEstabilidad VARCHAR(60) NOT NULL,
+    detalle VARCHAR(777) NOT NULL,
     CONSTRAINT estabilidad_poste_pk PRIMARY KEY  (idEstabilidadPoste)
 );
 
 -- Table: mantenimiento
-CREATE TABLE mantenimiento (
-    idTecnico int  NOT NULL,
-    idPosteLuz int  NOT NULL,
-    detalle varchar(400)  NOT NULL,
-    fecha date  NOT NULL,
-    hora time(6)  NOT NULL,
-    calidad varchar(20)  NOT NULL,
-    idTipoMantenimiento int  NOT NULL,
+CREATE TABLE mantenimiento
+(
+    idTecnico INT NOT NULL,
+    idPosteLuz INT NOT NULL,
+    detalle VARCHAR(400) NOT NULL,
+    fecha DATE NOT NULL,
+    hora TIME(6) NOT NULL,
+    calidad VARCHAR(20) NOT NULL,
+    idTipoMantenimiento INT NOT NULL,
     CONSTRAINT mantenimiento_pk PRIMARY KEY  (idTecnico,idPosteLuz)
 );
 
 -- Table: medidor_luz
-CREATE TABLE medidor_luz (
-    idMedidorLuz int  NOT NULL,
-    marca varchar(100)  NOT NULL,
-    modelo varchar(100)  NOT NULL,
-    fechaInstalacion date  NOT NULL,
-    capacidad decimal(10,4)  NOT NULL,
-    consumoMes decimal(10,4)  NOT NULL,
-    idEmpresaProveedora int  NOT NULL,
+CREATE TABLE medidor_luz
+(
+    idMedidorLuz INT NOT NULL,
+    marca VARCHAR(100) NOT NULL,
+    modelo VARCHAR(100) NOT NULL,
+    fechaInstalacion DATE NOT NULL,
+    capacidad DECIMAL(10,4) NOT NULL,
+    consumoMes DECIMAL(10,4) NOT NULL,
+    idEmpresaProveedora INT NOT NULL,
     CONSTRAINT medidor_luz_pk PRIMARY KEY  (idMedidorLuz)
 );
 
 -- Table: poste_luz
-CREATE TABLE poste_luz (
-    idPosteLuz int  NOT NULL,
-    fechaInstalacion date  NOT NULL,
-    idEstabilidadPoste int  NOT NULL,
-    idEmpresaReguladora int  NOT NULL,
-    idZona int  NOT NULL,
+CREATE TABLE poste_luz
+(
+    idPosteLuz INT NOT NULL,
+    fechaInstalacion DATE NOT NULL,
+    idEstabilidadPoste INT NOT NULL,
+    idEmpresaReguladora INT NOT NULL,
+    idZona INT NOT NULL,
     CONSTRAINT poste_luz_pk PRIMARY KEY  (idPosteLuz)
 );
 
 -- Table: propiedad
-CREATE TABLE propiedad (
-    idPropiedad int  NOT NULL,
-    tipoPropiedad varchar(100)  NOT NULL,
-    idZona int  NOT NULL,
-    idUsuario int  NOT NULL,
-    idDispositivoMedidor int  NOT NULL,
-    idEmpresaProveedora int  NOT NULL,
+CREATE TABLE propiedad
+(
+    idPropiedad INT NOT NULL,
+    tipoPropiedad VARCHAR(100) NOT NULL,
+    idZona INT NOT NULL,
+    idUsuario INT NOT NULL,
+    idDispositivoMedidor INT NOT NULL,
+    idEmpresaProveedora INT NOT NULL,
     CONSTRAINT propiedad_pk PRIMARY KEY  (idPropiedad)
 );
 
 -- Table: reporte_consumo
-CREATE TABLE reporte_consumo (
-    idReporteConsumoEnergia int  NOT NULL,
-    fechaExacta date  NOT NULL,
-    idUsuario int  NOT NULL,
-    idPropiedad int  NOT NULL,
-    idDispositivoMedidor int  NOT NULL,
+CREATE TABLE reporte_consumo
+(
+    idReporteConsumoEnergia INT NOT NULL,
+    fechaExacta DATE NOT NULL,
+    idUsuario INT NOT NULL,
+    idPropiedad INT NOT NULL,
+    idDispositivoMedidor INT NOT NULL,
     CONSTRAINT reporte_consumo_pk PRIMARY KEY  (idReporteConsumoEnergia)
 );
 
 -- Table: reporte_consumo_proveedora
-CREATE TABLE reporte_consumo_proveedora (
-    idReporteConsumoProveedora int  NOT NULL,
-    idMedidorLuz int  NOT NULL,
-    consumoTotal int  NOT NULL,
-    fecha date  NOT NULL,
+CREATE TABLE reporte_consumo_proveedora
+(
+    idReporteConsumoProveedora INT NOT NULL,
+    idMedidorLuz INT NOT NULL,
+    consumoTotal INT NOT NULL,
+    fecha DATE NOT NULL,
     CONSTRAINT reporte_consumo_proveedora_pk PRIMARY KEY  (idReporteConsumoProveedora)
 );
 
 -- Table: tecnico
-CREATE TABLE tecnico (
-    idTecnico int  NOT NULL,
-    nombres varchar(40)  NOT NULL,
-    apellidos varchar(40)  NOT NULL,
-    telefono char(9)  NOT NULL,
-    dni char(8)  NOT NULL,
-    aniosServicio int  NOT NULL,
-    mesesServicio int  NOT NULL,
-    empresa varchar(60)  NOT NULL,
+CREATE TABLE tecnico
+(
+    idTecnico INT NOT NULL,
+    nombres VARCHAR(40) NOT NULL,
+    apellidos VARCHAR(40) NOT NULL,
+    telefono CHAR(9) NOT NULL,
+    dni CHAR(8) NOT NULL,
+    aniosServicio INT NOT NULL,
+    mesesServicio INT NOT NULL,
+    empresa VARCHAR(60) NOT NULL,
     CONSTRAINT tecnico_pk PRIMARY KEY  (idTecnico)
 );
 
 -- Table: tipo_mantenimiento
-CREATE TABLE tipo_mantenimiento (
-    idTipoMantenimiento int  NOT NULL,
-    tipoMantenimiento varchar(60)  NOT NULL,
-    detalle varchar(777)  NOT NULL,
+CREATE TABLE tipo_mantenimiento
+(
+    idTipoMantenimiento INT NOT NULL,
+    tipoMantenimiento VARCHAR(60) NOT NULL,
+    detalle VARCHAR(777) NOT NULL,
     CONSTRAINT tipo_mantenimiento_pk PRIMARY KEY  (idTipoMantenimiento)
 );
 
 -- Table: usuario
-CREATE TABLE usuario (
-    idUsuario int  NOT NULL,
-    nombres varchar(40)  NOT NULL,
-    apellidos varchar(40)  NOT NULL,
-    telefono char(9)  NOT NULL,
-    dni char(8)  NOT NULL,
+CREATE TABLE usuario
+(
+    idUsuario INT NOT NULL,
+    nombres VARCHAR(40) NOT NULL,
+    apellidos VARCHAR(40) NOT NULL,
+    telefono CHAR(9) NOT NULL,
+    dni CHAR(8) NOT NULL,
     CONSTRAINT usuario_pk PRIMARY KEY  (idUsuario)
 );
 
 -- Table: zona
-CREATE TABLE zona (
-    idZona int  NOT NULL,
-    nombreZona varchar(50)  NULL,
-    latitud decimal(9,6)  NOT NULL,
-    longitud decimal(9,6)  NOT NULL,
-    idDistrito int  NULL,
+CREATE TABLE zona
+(
+    idZona INT NOT NULL,
+    nombreZona VARCHAR(50) NULL,
+    latitud DECIMAL(9,6) NOT NULL,
+    longitud DECIMAL(9,6) NOT NULL,
+    idDistrito INT NULL,
     CONSTRAINT zona_pk PRIMARY KEY  (idZona)
 );
 

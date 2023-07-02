@@ -24,7 +24,7 @@ CREATE PROCEDURE usp_inf_poste_luz_segun_zona_por_determinado_mantenimiento_y_fe
 AS
 BEGIN
     SELECT nombreZona, P.idPosteLuz, fechaInstalacion
-    from poste_luz P
+    FROM poste_luz P
         INNER JOIN zona Z on Z.idZona = P.idZona
         INNER JOIN mantenimiento M on M.idPosteLuz = P.idPosteLuz
         INNER JOIN tipo_mantenimiento TM on TM.idTipoMantenimiento = M.idTipoMantenimiento
@@ -43,7 +43,7 @@ BEGIN
     DECLARE @total_consumo INT
     DECLARE cursor_elecconsumo cursor for
 SELECT nombreElec, SUM(consumoEnergiaElec)total_consumo
-    from electrodomestico E
+    FROM electrodomestico E
         INNER JOIN aviso A on A.idElectrodomestico = E.idElectrodomestico
         INNER JOIN usuario U on A.idUsuario = U.idUsuario
     WHERE U.idUsuario = @idusuario

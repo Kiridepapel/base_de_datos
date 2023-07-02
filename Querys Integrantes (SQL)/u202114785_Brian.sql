@@ -1,4 +1,6 @@
 -- QUERY 1: Obtener la información de los electrodomésticos y de los usuarios que han generado al menos dos avisos de uso de electrodoméstico(s) entre el 20 y 30 de junio de 2023, así como la cantidad de reportes generados por ese electrodoméstico.
+USE wolex;
+GO
 CREATE PROCEDURE usp_UsuariosConAvisosEnFecha
   @FechaInicio DATE,
   @FechaFin DATE,
